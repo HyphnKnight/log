@@ -6,7 +6,7 @@ module.exports = ( function ( printMessage , theme , _ ) {
 						_.isArray( task ) ?
 							{	title : 'The tasks below are being run for ' + theme.package( package ),
 								message : _.map( task , function ( value ) { return theme.packageTask( value ); } ) } :
-							'The task ' + theme.packageTask( task ) + ' is being created for ' + theme.package( package ),
+							'The task ' + theme.packageTask( task ) + ' is being run for ' + theme.package( package ),
 						note );
 
 	};
