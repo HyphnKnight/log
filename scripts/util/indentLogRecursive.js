@@ -48,9 +48,16 @@ module.exports = ( function ( _ , theme ) {
 				.pairs()
 				.each( function ( dataPair ) {
 
-					_.isString( dataPair[1] ) ?
-						console.log( space + dataPair[0] + ' : ' + dataPair[1] ) :
-						console.log( space + dataPair[0] ) && indentLogRecursive( dataPair[1] , space );
+					if ( _.isString( dataPair[1] ) ) {
+
+						console.log( space + dataPair[0] + ' : ' + dataPair[1] );
+
+					} else {
+
+						console.log( space + dataPair[0] );
+						indentLogRecursive( dataPair[1] , space );
+
+					}
 
 				} );
 
