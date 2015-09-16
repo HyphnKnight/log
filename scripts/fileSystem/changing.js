@@ -1,14 +1,14 @@
 module.exports = ( function ( printMessage , theme , _ ) {
 
-	return function changing ( path , tasks , note ) {
+	return function changing ( path , type , tasks , note ) {
 
 		tasks = ( _.isArray( tasks ) ? tasks.join(", ") : tasks )
 
 		printMessage(	theme.warning( 'Changing' ),
 						_.isArray( path ) ?
-							{	title : 'The files below have changed, running ' + theme.packageTask( tasks ) + '.',
+							{	title : 'The files below have ' + type + ', running ' + theme.packageTask( tasks ) + '.',
 								message : _.map( path , function ( value ) { return theme.srcPath( value ); } ) } :
-							'The file ' + theme.srcPath( path ) + ' has changed, running ' + theme.packageTask( tasks ) + '.',
+							'The file ' + theme.srcPath( path ) + ' has ' + type + ', running ' + theme.packageTask( tasks ) + '.',
 						note );
 
 	};
