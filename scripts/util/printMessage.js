@@ -6,7 +6,9 @@ module.exports = ( function ( _ , chalk , zeroToTwoDigits , indentLogRecursive ,
 			date = new Date(),
 			timeStamp = '[' + chalk.gray( zeroToTwoDigits( date.getHours() ) + ':' + zeroToTwoDigits( date.getMinutes() ) + ':' + zeroToTwoDigits( date.getSeconds() ) ) + ']';
 
-		if ( _.isString( message ) ) {
+		if ( _.isString( message ) || _.isNumber( message ) ) {
+
+			messages =  _.isNumber( message ) ? '' + message : message;
 
 			space( _.isNumber( beforeSpace ) ?
 				beforeSpace :

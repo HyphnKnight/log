@@ -6,7 +6,7 @@ module.exports = ( function ( _ , theme ) {
 			space + '    ' :
 			'    ';
 
-		if ( _.isString( messages ) ) {
+		if ( _.isString( messages ) || _.isNumber ) {
 
 
 			if ( messages.length < 80 ) {
