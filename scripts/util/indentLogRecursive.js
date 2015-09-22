@@ -6,8 +6,10 @@ module.exports = ( function ( _ , theme ) {
 			space + '    ' :
 			'    ';
 
-		if ( _.isString( messages ) || _.isNumber ) {
+		if ( _.isString( messages ) || _.isNumber( messages ) ) {
 
+
+			messages = '' + messages;
 
 			if ( messages.length < 80 ) {
 
@@ -48,9 +50,11 @@ module.exports = ( function ( _ , theme ) {
 				.pairs()
 				.each( function ( dataPair ) {
 
-					if ( _.isString( dataPair[1] ) ) {
+					if ( _.isString( dataPair[1] ) || _.isNumber( dataPair[1] ) ) {
 
-						console.log( space + dataPair[0] + ' : ' + dataPair[1] );
+						var message = '' + dataPair[1];
+
+						console.log( space + dataPair[0] + ' : ' + message );
 
 					} else {
 

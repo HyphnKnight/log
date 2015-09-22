@@ -8,7 +8,7 @@ module.exports = ( function ( _ , chalk , zeroToTwoDigits , indentLogRecursive ,
 
 		if ( _.isString( message ) || _.isNumber( message ) ) {
 
-			messages =  _.isNumber( message ) ? '' + message : message;
+			messages = '' + message;
 
 			space( _.isNumber( beforeSpace ) ?
 				beforeSpace :
