@@ -6,9 +6,9 @@ module.exports = ( function ( printMessage , theme , _ ) {
 
 		printMessage(	theme.warning( 'Changing' ),
 						_.isArray( path ) ?
-							{	title : 'The files below have ' + type + ', running ' + theme.packageTask( tasks ) + '.',
+							{	title : 'The files below have experienced ' + type + ', running ' + theme.packageTask( tasks ) + '.',
 								message : _.map( path , function ( value ) { return theme.srcPath( value ); } ) } :
-							'The file ' + theme.srcPath( path ) + ' has ' + type + ', running ' + theme.packageTask( tasks ) + '.',
+							'The file ' + theme.srcPath( path ) + ' has experienced ' + type + ', running ' + theme.packageTask( tasks ) + '.',
 						note );
 
 	};
