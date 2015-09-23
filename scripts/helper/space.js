@@ -4,15 +4,7 @@ module.exports = ( function ( _ ) {
 
 		num = _.isNumber( num ) ? num : 1;
 
-		if ( num > 0) {
-
-			for ( var i = 0 ; i < num ; ++i ) {
-
-				console.log();
-
-			}
-
-		}
+		_.times( num , function( ) { console.log() })
 
 	};
 
