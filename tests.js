@@ -58,11 +58,7 @@ module.exports = ( function ( log ){
 		},
 		errorReturnString = 'Mauris placerat pharetra tortor id consectetur. Aenean non fermentum lorem.';
 
-	console.log( '---------------------------------------------' );
-
 	log.starting( 'Testing the log node module.' )
-
-	console.log( '---------------------------------------------' );
 
 	log.success( message.a );
 
@@ -70,15 +66,11 @@ module.exports = ( function ( log ){
 
 	log.success( message.b , notes.a );
 
-	console.log( '---------------------------------------------' );
-
 	log.warning( message.b );
 
 	console.log( '-' );
 
 	log.warning( message.a , notes.b );
-
-	console.log( '---------------------------------------------' );
 
 	log.error( message.b );
 
@@ -94,50 +86,36 @@ module.exports = ( function ( log ){
 
 	log.error( message.a , notes.b , errorReturnObj );
 
-	console.log( '---------------------------------------------' );
-
 	log.failure( message.a );
 
 	console.log( '-' );
 
 	log.failure( message.b , notes.a );
 
-	console.log( '---------------------------------------------' );
-
 	log.creating( paths.a );
 	log.creating( paths.b , notes.a );
 	log.creating( paths.array );
 	log.creating( paths.array , notes.a );
-
-	console.log( '---------------------------------------------' );
 
 	log.copying( paths.a , paths.b );
 	log.copying( paths.b , paths.a , notes.a );
 	log.copying( paths.array , paths.b );
 	log.copying( paths.array , paths.a , notes.a );
 
-	console.log( '---------------------------------------------' );
-
 	log.deleting( paths.a );
 	log.deleting( paths.b , notes.a );
 	log.deleting( paths.array );
 	log.deleting( paths.array , notes.a );
-
-	console.log( '---------------------------------------------' );
 
 	log.existing( paths.a );
 	log.existing( paths.b , notes.a );
 	log.existing( paths.array );
 	log.existing( paths.array , notes.a );
 
-	console.log( '---------------------------------------------' );
-
 	log.processing( paths.a , folders.b , task.a );
 	log.processing( paths.b , folders.a , task.b , notes.a );
 	log.processing( paths.array , folders.b , task.a );
 	log.processing( paths.array , folders.a , task.b , notes.a );
-
-	console.log( '---------------------------------------------' );
 
 	log.changing( paths.a , task.a );
 	log.changing( paths.b , task.b , notes.a );
@@ -148,12 +126,8 @@ module.exports = ( function ( log ){
 	log.changing( paths.array , task.array );
 	log.changing( paths.array , task.array , notes.a );
 
-	console.log( '---------------------------------------------' );
-
 	log.writing( paths.a , buffer );
 	log.writing( paths.b , buffer , notes.a );
-
-	console.log( '---------------------------------------------' );
 
 	log.watching( paths.a , task.a , package.a );
 	log.watching( paths.b , task.b , package.b , notes.a );
@@ -164,36 +138,26 @@ module.exports = ( function ( log ){
 	log.watching( paths.array , task.array , package.a );
 	log.watching( paths.array , task.array , package.b , notes.a );
 
-	console.log( '---------------------------------------------' );
-
 	log.installingPackage( package.a , service );
 	log.installingPackage( package.b , service , notes.a );
 	log.installingPackage( package.array , service );
 	log.installingPackage( package.array , service , notes.a );
-
-	console.log( '---------------------------------------------' );
 
 	log.uninstallingPackage( package.a , service );
 	log.uninstallingPackage( package.b , service , notes.a );
 	log.uninstallingPackage( package.array , service );
 	log.uninstallingPackage( package.array , service , notes.a );
 
-	console.log( '---------------------------------------------' );
-
 	log.creatingTask( task.a , package.a );
 	log.creatingTask( task.b , package.b , notes.a );
 	log.creatingTask( task.array , package.a );
 	log.creatingTask( task.array , package.b , notes.a );
-
-	console.log( '---------------------------------------------' );
 
 	log.runningTask( task.a , package.a );
 	log.runningTask( task.b , package.b , notes.a );
 	log.runningTask( task.array , package.a );
 	log.runningTask( task.array , package.b , notes.a );
 
-
-	console.log( '---------------------------------------------' );
 
 	console.log('-');
 
@@ -213,8 +177,6 @@ module.exports = ( function ( log ){
 
 	console.log('^4-');
 
-	console.log( '---------------------------------------------' );
-
 	log.note( notes.a );
 	console.log( '-----' );
 	log.note( notes.b , notes.a );
@@ -223,10 +185,6 @@ module.exports = ( function ( log ){
 	console.log( '-----' );
 	log.note( buffer );
 
-	console.log( '---------------------------------------------' );
-
 	log.ending( 'Finished testing the log node module.' )
-
-	console.log( '---------------------------------------------' );
 
 })( require( './index.js' ) );
