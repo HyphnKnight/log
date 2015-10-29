@@ -1,8 +1,8 @@
-module.exports = ( function ( printMessage , theme , _ ) {
+module.exports = ( function ( printMessage , theme , stringAlignRight , _ ) {
 
 	return function copying ( sourcePath , destinationPath , note ) {
 
-		printMessage(	theme.positive( 'Copying' ),
+		printMessage(	theme.positive( stringAlignRight( 'Copying' ) ),
 						_.isArray( sourcePath ) ?
 							{	title : 'Copying the following files to ' + theme.destPath( destinationPath ),
 								message : _.map( sourcePath , function ( value ) { return theme.srcPath( value ); } ) } :
@@ -13,4 +13,5 @@ module.exports = ( function ( printMessage , theme , _ ) {
 
 } ) (	require( './../util/printMessage.js' ),
 		require( './../util/theme.js' ),
+		require( './../util/stringAlignRight.js' ),
 		require( 'underscore' ) );

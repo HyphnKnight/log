@@ -1,8 +1,8 @@
-module.exports = ( function ( printMessage , theme , _ ) {
+module.exports = ( function ( printMessage , theme , stringAlignRight , _ ) {
 
 	return function deleting ( path , note ) {
 
-		printMessage(	theme.danger( 'Deleting' ),
+		printMessage(	theme.danger( stringAlignRight( 'Deleting' ) ),
 						_.isArray( path ) ?
 							{	title : 'Deleting the following files',
 								message : _.map( path , function ( value ) { return theme.dangerS( value ); } ) } :
@@ -13,4 +13,5 @@ module.exports = ( function ( printMessage , theme , _ ) {
 
 } ) (	require( './../util/printMessage.js' ),
 		require( './../util/theme.js' ),
+		require( './../util/stringAlignRight.js' ),
 		require( 'underscore' ) );

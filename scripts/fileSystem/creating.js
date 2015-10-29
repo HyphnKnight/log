@@ -1,8 +1,8 @@
-module.exports = ( function ( printMessage , theme , _ ) {
+module.exports = ( function ( printMessage , theme , stringAlignRight , _ ) {
 
 	return function creating ( path , note ) {
 
-		printMessage(	theme.positive( 'Creating' ),
+		printMessage(	theme.positive( stringAlignRight( 'Creating' ) ),
 						_.isArray( path ) ?
 							{	title : 'Creating the following files/directories ',
 								message : _.map( path , function ( value ) { return theme.destPath( value ); } ) } :
@@ -13,4 +13,5 @@ module.exports = ( function ( printMessage , theme , _ ) {
 
 } ) (	require( './../util/printMessage.js' ),
 		require( './../util/theme.js' ),
+		require( './../util/stringAlignRight.js' ),
 		require( 'underscore' ) );
