@@ -2,7 +2,7 @@ module.exports = ( function ( printMessage , theme , stringAlignRight ) {
 
 	return function starting ( process , note ) {
 
-		printMessage( theme.positiveB( stringAlignRight( 'Starting' ) ) , process , note , 3 , 2 );
+		printMessage( theme.positiveB( stringAlignRight( 'Starting' ) ) , process , note , 2 , 1 );
 
 	};
 

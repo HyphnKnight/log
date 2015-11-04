@@ -5,7 +5,7 @@ module.exports = ( function ( printMessage , theme , stringAlignRight , _ ) {
 		printMessage(	theme.danger( stringAlignRight( 'Error' ) ),
 						_.isUndefined( err ) ?
 						message :
-						{ title : message , message : err  } , note , 1 );
+						{ title : message , message : err  } , note );
 
 	};
 
