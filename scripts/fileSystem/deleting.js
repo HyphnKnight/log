@@ -4,9 +4,9 @@ module.exports = ( function ( printMessage , theme , stringAlignRight , _ ) {
 
 		printMessage(	theme.danger( stringAlignRight( 'Deleting' ) ),
 						_.isArray( path ) ?
-							{	title : 'Deleting the following files',
+							{	title : 'Deleting the following files/directories ',
 								message : _.map( path , function ( value ) { return theme.dangerS( value ); } ) } :
-							'Deleting the file ' + theme.dangerS( path ),
+							'Deleting the file/directory ' + theme.dangerS( path ),
 						note );
 
 	};
