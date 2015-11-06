@@ -2,6 +2,7 @@ var
 	processPath	= './scripts/process/',
 	fsPath		= './scripts/fileSystem/',
 	packagePath	= './scripts/packages/',
+	serverPath	= './scripts/server/',
 	helperPath	= './scripts/helper/'
 
 module.exports = ( function (	success,
@@ -25,6 +26,10 @@ module.exports = ( function (	success,
 								uninstallingPackage,
 								creatingTask,
 								runningTask,
+
+								response,
+								route,
+								startingServer,
 
 								space,
 								note ) {
@@ -56,6 +61,12 @@ module.exports = ( function (	success,
 		creatingTask : creatingTask,
 		runningTask : runningTask,
 
+
+		//Server
+		response : response,
+		route : route,
+		startingServer : startingServer,
+
 		//Utility
 		space : space,
 		note : note
@@ -83,6 +94,10 @@ module.exports = ( function (	success,
 		require( packagePath + 'uninstallingPackage.js' ),
 		require( packagePath + 'creatingTask.js' ),
 		require( packagePath + 'runningTask.js' ),
+
+		require( serverPath + 'response.js' ),
+		require( serverPath + 'route.js' ),
+		require( serverPath + 'startingServer.js' ),
 
 		require( helperPath + 'space.js' ),
 		require( helperPath + 'note.js' ) );
