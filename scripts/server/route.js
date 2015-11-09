@@ -1,9 +1,9 @@
 module.exports = ( function ( printMessage , theme , stringAlignRight , _ ) {
 
-	return function route ( method , path ) {
+	return function route ( method , servedPath , servingPath ) {
 
-		printMessage(	theme.positive( stringAlignRight( 'New Route' ) ),
-						'New ' + method + ' route created for ' + theme.destPath( path ) ),
+		printMessage(	theme.positive( stringAlignRight( 'Route' ) ),
+						'Serving ' + theme.srcPath( servingPath ) + ' on the route ' + theme.destPath( servedPath ),
 						note );
 
 	};
