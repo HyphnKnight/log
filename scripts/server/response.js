@@ -7,8 +7,7 @@ module.exports = ( function ( printMessage , theme , stringAlignRight , _ ) {
 		printMessage(	theme.positive( stringAlignRight( 'Response' ) ),
 						_.isUndefined( responseDesc ) ?
 							message :
-							{ title : message , message : responseDesc  },
-						note );
+							{ title : message , message : responseDesc  } );
 
 	};
 
