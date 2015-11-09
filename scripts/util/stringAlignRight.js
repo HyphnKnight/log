@@ -3,7 +3,7 @@ module.exports = ( function ( ) {
 
 	return function stringAlignRight ( str ) {
 
-		if ( str.length >= 15 ) {
+		if ( str.length >= 13 ) {
 
 			return str;
 
