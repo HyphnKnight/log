@@ -117,14 +117,14 @@ module.exports = ( function ( log ){
 	log.processing( paths.array , folders.b , task.a );
 	log.processing( paths.array , folders.a , task.b , notes.a );
 
-	log.changing( paths.a , task.a );
-	log.changing( paths.b , task.b , notes.a );
-	log.changing( paths.array , task.a );
-	log.changing( paths.array , task.b , notes.a );
-	log.changing( paths.a , task.array );
-	log.changing( paths.b , task.array , notes.a );
-	log.changing( paths.array , task.array );
-	log.changing( paths.array , task.array , notes.a );
+	log.changing( paths.a , 'Edit' , task.a );
+	log.changing( paths.b , 'Edit' , task.b , notes.a );
+	log.changing( paths.array , 'Edit' , task.a  );
+	log.changing( paths.array , 'Edit' , task.b  , notes.a );
+	log.changing( paths.a , 'Edit' , task.array  );
+	log.changing( paths.b , 'Edit' , task.array  , notes.a );
+	log.changing( paths.array , 'Edit' , task.array  );
+	log.changing( paths.array , 'Edit' , task.array  , notes.a );
 
 	log.writing( paths.a , buffer );
 	log.writing( paths.b , buffer , notes.a );
@@ -148,10 +148,10 @@ module.exports = ( function ( log ){
 	log.uninstallingPackage( package.array , service );
 	log.uninstallingPackage( package.array , service , notes.a );
 
-	log.creatingTask( task.a , package.a );
-	log.creatingTask( task.b , package.b , notes.a );
-	log.creatingTask( task.array , package.a );
-	log.creatingTask( task.array , package.b , notes.a );
+	log.makingTask( task.a , package.a );
+	log.makingTask( task.b , package.b , notes.a );
+	log.makingTask( task.array , package.a );
+	log.makingTask( task.array , package.b , notes.a );
 
 	log.runningTask( task.a , package.a );
 	log.runningTask( task.b , package.b , notes.a );

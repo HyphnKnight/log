@@ -3,11 +3,12 @@
 const
 	printMessage	= require( './util/printMessage.js' ),
 	theme			= require( './util/theme.js' ),
+	titles			= require( './util/titles.js' ),
 	_				= require( 'underscore' );
 
 function reading ( path , note ) {
 
-	printMessage(	theme.positive( 'Reading' ),
+	printMessage(	titles.reading,
 					_.isArray( path ) ?
 						{	title : 'Reading from the following files',
 							message : _.map( path , value => { return theme.destPath( value ); } ) } :
@@ -18,13 +19,13 @@ function reading ( path , note ) {
 
 function writing ( path , note ) {
 
-		printMessage( theme.positive( 'Writing' ) , `A buffer is being written to ${theme.destPath( path )}`, note );
+		printMessage( titles.writing , `A buffer is being written to ${theme.destPath( path )}`, note );
 
 };
 
 function creating ( path , note ) {
 
-	printMessage(	theme.positive( 'Creating' ),
+	printMessage(	titles.creating,
 					_.isArray( path ) ?
 						{	title : 'Creating the following files/directories ',
 							message : _.map( path , value => { return theme.destPath( value ); } ) } :
@@ -35,7 +36,7 @@ function creating ( path , note ) {
 
 function deleting ( path , note ) {
 
-	printMessage(	theme.danger( 'Deleting' ),
+	printMessage(	titles.deleting,
 					_.isArray( path ) ?
 						{	title : 'Deleting the following files/directories ',
 							message : _.map( path , value => { return theme.delPath( value ); } ) } :
@@ -46,7 +47,7 @@ function deleting ( path , note ) {
 
 function existing ( path , note ) {
 
-	printMessage(	theme.warningB( 'Existing' ),
+	printMessage(	titles.existing,
 					_.isArray( path ) ?
 						{	title : 'The following files already exist',
 							message : _.map( path , value => { return theme.destPath( value ); } ) } :
@@ -57,7 +58,7 @@ function existing ( path , note ) {
 
 function copying ( sourcePath , destinationPath , note ) {
 
-	printMessage(	theme.positive( 'Copying' ),
+	printMessage(	titles.copying,
 					_.isArray( sourcePath ) ?
 						{	title : `Copying the following files to ${theme.destPath( destinationPath )}`,
 							message : _.map( sourcePath , value => { return theme.srcPath( value ); } ) } :
@@ -68,7 +69,7 @@ function copying ( sourcePath , destinationPath , note ) {
 
 function processing ( sourcePath , destinationPath , task , note ) {
 
-	printMessage(	theme.positive( 'Processing' ),
+	printMessage(	titles.processing,
 					_.isArray( sourcePath ) ?
 						{	title : `Processing following files with ${theme.packageTask( task )} and moving the results to ${theme.destPath( destinationPath )}`,
 							message : _.map( sourcePath , function ( value ) { return theme.srcPath( value ); } ) } :
@@ -79,26 +80,34 @@ function processing ( sourcePath , destinationPath , task , note ) {
 
 function watching ( path , tasks , pckg , note ) {
 
-	tasks = ( _.isArray( tasks ) ? tasks.join(", ") : tasks )
+	tasks = _.isUndefined( tasks ) ?
+		'' :
+		_.isArray( tasks ) ?
+			theme.packageTask( tasks.join(', ') ) :
+			theme.packageTask( tasks );
 
-	printMessage(	theme.positive( 'Watching' ),
+	printMessage(	titles.watching,
 					_.isArray( path ) ?
-						{	title : `The files below are being watch. If changed will run ${theme.packageTask( tasks )} with ${theme.package( pckg )}.`,
+						{	title : `The files below are being watch. If changed will run ${tasks} with ${theme.package( pckg )}.`,
 							message : _.map( path , value => { return theme.srcPath( value ); } ) } :
-						`When ${theme.srcPath( path )} changes will run ${theme.packageTask( tasks )} with ${theme.package( pckg )}.`,
+						`When ${theme.srcPath( path )} changes will run ${tasks} with ${theme.package( pckg )}.`,
 					note );
 
 };
 
 function changing ( path , type , tasks , note ) {
 
-	tasks = ( _.isArray( tasks ) ? tasks.join(", ") : tasks )
+	tasks = _.isUndefined( tasks ) ?
+		'' :
+		_.isArray( tasks ) ?
+			', running ' + theme.packageTask( tasks.join(', ') ) :
+			`, running ${theme.packageTask( tasks )}`;
 
-	printMessage(	theme.warning( 'Changing' ),
+	printMessage(	titles.changing,
 					_.isArray( path ) ?
-						{	title : `The files below have experienced ${type}, running ${theme.packageTask( tasks )}.`,
+						{	title : `The files below have experienced ${theme.warning( type )}${tasks}.`,
 							message : _.map( path , function ( value ) { return theme.srcPath( value ); } ) } :
-						`The file ${theme.srcPath( path )} has experienced type, running ${theme.packageTask( tasks )}.`,
+						`The file ${theme.srcPath( path )} has experienced ${theme.warning( type )}${tasks}.`,
 					note );
 
 };

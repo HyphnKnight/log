@@ -3,23 +3,24 @@
 const
 	printMessage	= require( './util/printMessage.js' ),
 	theme			= require( './util/theme.js' ),
+	titles			= require( './util/titles.js' ),
 	_				= require( 'underscore' );
 
 function starting ( process , note ) {
 
-	printMessage( theme.positiveB( 'Starting' ) , process , note , 1 , 0 );
+	printMessage( titles.starting , process , note , 1 , 0 );
 
 };
 
 function ending ( process , note ) {
 
-	printMessage( theme.positiveB( 'Ending' ) , process , note , 0 , 1 );
+	printMessage( titles.ending , process , note , 0 , 1 );
 
 };
 
 function success ( message , note , info ) {
 
-	printMessage(	theme.positiveB( 'Success' ),
+	printMessage(	titles.success,
 					_.isUndefined( info ) ?
 					message :
 					{ title : message , message : info  } , note );
@@ -28,7 +29,7 @@ function success ( message , note , info ) {
 
 function warning ( message , note , err ) {
 
-	printMessage(	theme.warning( 'Warning' ),
+	printMessage(	titles.warning,
 					_.isUndefined( err ) ?
 					message :
 					{ title : message , message : err  } , note );
@@ -37,7 +38,7 @@ function warning ( message , note , err ) {
 
 function failure ( message , note ) {
 
-	printMessage( theme.dangerB( 'Failure' ) , message , note , 0 , 1 );
+	printMessage( titles.failure , message , note , 0 , 1 );
 
 };
 
@@ -55,7 +56,7 @@ function error ( message , note , err ) {
 
 	} else error = err;
 
-	printMessage(	theme.danger( 'Error' ),
+	printMessage(	titles.error,
 					_.isUndefined( err ) ? message : { title : message , message : error  },
 					note );
 

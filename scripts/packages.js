@@ -1,14 +1,15 @@
 'use strict';
 
 const
-	_ = require( 'underscore' ),
-	printMessage = require( './util/printMessage.js' ),
-	theme = require( './util/theme.js' );
+	_				= require( 'underscore' ),
+	printMessage	= require( './util/printMessage.js' ),
+	titles			= require( './util/titles.js' ),
+	theme			= require( './util/theme.js' );
 
 
 function installingPackage ( pckg , service , note ) {
 
-	printMessage(	theme.positive( 'Installing' ),
+	printMessage(	titles.installingPackage,
 					_.isArray( pckg ) ?
 						{	title : `The packages below are being installed via ${theme.service(  ' ' + service + ' '  )}`,
 							message : _.map( pckg , value => { return theme.package( value ); } ) } :
@@ -19,35 +20,38 @@ function installingPackage ( pckg , service , note ) {
 
 function uninstallingPackage ( pckg , service , note ) {
 
-	printMessage(	theme.positive( 'Uninstalling' ),
+	printMessage(	titles.uninstallingPackage,
 					_.isArray( pckg ) ?
 						{	title : `The packages below are being uninstalled from ${theme.service(  ' ' + service + ' '  )}`,
 							message : _.map( pckg , value => { return theme.package( value ); } ) } :
-						`The pckg ${theme.package( pckg )} is being uninstalled from ${theme.service( ' ' + service + ' ' )}`,
+						`The package ${theme.package( pckg )} is being uninstalled from ${theme.service( ' ' + service + ' ' )}`,
 					note );
 
 };
 
-function creatingTask ( task , pckg , note ) {
+function makingTask ( task , pckg , note ) {
 
-	printMessage(	theme.positive( 'Creating Task' ),
+	printMessage(	titles.makingTask,
 					_.isArray( task ) ?
-						{	title : `The tasks below are being created for ${theme.package( pckg )}`,
+						{	title : `The tasks below are being made for ${theme.package( pckg )}`,
 							message : _.map( task , value => { return theme.packageTask( value ); } ) } :
-						`The task ${theme.packageTask( task )} is being created for ${theme.package( pckg )}`,
+						`The task ${theme.packageTask( task )} is being made for ${theme.package( pckg )}`,
 					note );
 
 };
 
 function runningTask ( task , pckg , path , note ) {
 
-	printMessage(	theme.positive( 'Running Task' ),
+	path = _.isUndefined( path ) ?
+		'' : ` on ${theme.destPath( path )}`;
+
+	printMessage(	titles.runningTask,
 					_.isArray( task ) ?
-						{	title : `The tasks below are being run on ${theme.destPath( path )} with ${theme.package( pckg )}`,
+						{	title : `The tasks below are being run with ${theme.package( pckg )}${path}`,
 							message : _.map( task , value => { return theme.packageTask( value ); } ) } :
-						`The task ${theme.packageTask( task )} is being run on ${theme.destPath( path )} with ${theme.package( pckg )}`,
+						`The task ${theme.packageTask( task )} is being run with ${theme.package( pckg )}${path}`,
 					note );
 
 };
 
-module.exports = { installingPackage , uninstallingPackage , creatingTask , runningTask };
+module.exports = { installingPackage , uninstallingPackage , makingTask , runningTask };

@@ -1,29 +1,57 @@
 'use strict';
 
-const chalk = require( 'chalk' );
+const
+	chalk = require( 'chalk' ),
+	stringAlignRight = require( './stringAlignRight.js' );
 
 module.exports = {
 
-	positive	: chalk.green,				// Something happened succesfully
-	positiveI	: chalk.green.italic,		// Something happened succesfully inside a different type of message
-	positiveB	: chalk.green.bold,			// Something AWESOME has happened
+	// Something happened succesfully
+	positive ( string ) { return chalk.green( string ); },
 
-	warning		: chalk.yellow,				// Warning text
-	warningI	: chalk.yellow.italic,		// warning text inside of a non warning message
-	warningB	: chalk.yellow.bold,		// Serious Warning
+	// Something happened succesfully inside a different type of message
+	positiveI ( string ) { return chalk.green.italic( string ); },
 
-	danger		: chalk.red,				// For error text
-	dangerB		: chalk.red.bold,			// HUGE ISSUE
+	// Something AWESOME has happened
+	positiveB ( string ) { return chalk.green.bold( string ); },
 
-	destPath	: chalk.cyan,				// The path to a file or dir destination
-	srcPath		: chalk.cyan.dim,			// The path to a source file or dir
-	delPath		: chalk.red.dim,			// The path to a file marked for removal
+	// Warning text
+	warning ( string ) { return chalk.yellow( string ); },
 
-	packageTask	: chalk.magenta,			// A specific task or method executed by a module i.e. render of jade.render()
-	package		: chalk.magenta.underline,	// A particular module of a service i.e. node-sass, jade , rjs
-	service		: chalk.magenta.bold,		// A top level service such as node, npm , bower or system
+	// Warning text inside of a non warning message
+	warningI ( string ) { return chalk.yellow.italic( string ); },
 
-	note		: chalk.gray.italic,		// Not part of the message but may be useful
-	noteTitle	: chalk.gray.underline		// Title of a longer note
+	// Serious Warning
+	warningB ( string ) { return chalk.yellow.bold( string ); },
+
+	// For error text
+	danger ( string ) { return chalk.red( string ); },
+
+	// HUGE ISSUE
+	dangerB ( string ) { return chalk.red.bold( string ); },
+
+	// The path to a file or dir destination
+	destPath ( string ) { return chalk.cyan( string ); },
+
+	// The path to a source file or dir
+	srcPath ( string ) { return chalk.cyan.dim( string ); },
+
+	// The path to a file marked for removal
+	delPath ( string ) { return chalk.red.dim( string ); },
+
+	// A specific task or method executed by a module i.e. render of jade.render()
+	packageTask ( string ) { return chalk.magenta( string ); },
+
+	// A particular module of a service i.e. node-sass, jade , rjs
+	package ( string ) { return chalk.magenta.underline( string ); },
+
+	// A top level service such as node, npm , bower or system
+	service ( string ) { return chalk.magenta.bold( string ); },
+
+	// Not part of the message but may be useful
+	note ( string ) { return chalk.gray.italic( string ); },
+
+	// Title of a longer note
+	noteTitle ( string ) { return chalk.gray.underline( string ); }
 
 };

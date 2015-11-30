@@ -26,7 +26,7 @@ module.exports = {
 
 	installingPackage	: pckg.installingPackage,
 	uninstallingPackage	: pckg.uninstallingPackage,
-	creatingTask		: pckg.creatingTask,
+	makingTask			: pckg.makingTask,
 	runningTask			: pckg.runningTask,
 
 	startingServer	: server.startingServer,
