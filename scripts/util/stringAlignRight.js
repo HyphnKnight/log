@@ -1,24 +1,16 @@
-module.exports = ( function ( ) {
-	'use strict';
+'use strict';
+module.exports = function stringAlignRight ( str ) {
 
-	return function stringAlignRight ( str ) {
+	console.log( str.length );
 
-		if ( str.length >= 13 ) {
+	if ( str.length >= 13 ) return str;
+	else {
+		console.log(str);
 
-			return str;
+		for ( let i = 12 - str.length; i >= 0; i--) str = ' ' + str;
 
-		} else {
+		return str;
 
-			for ( let i = 12 - str.length; i >= 0; i--) {
+	}
 
-				str = ' ' + str;
-
-			}
-
-			return str;
-
-		}
-
-	};
-
-} ) ( );
+};

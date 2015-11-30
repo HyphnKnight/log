@@ -1,18 +1,21 @@
-module.exports = ( function ( _ , theme ) {
+'use strict';
 
-	return function noteParser ( note ) {
+const
+	_ = require( 'underscore' ),
+	theme = require( './theme.js' );
 
-		if ( _.isString( note ) && note.length > 0 ) {
+function noteParser ( note ) {
 
-			return theme.note( ' : ' + note );
+	if ( _.isString( note ) && note.length > 0 ) {
 
-		} else {
+		return theme.note( ' : ' + note );
 
-			return '';
+	} else {
 
-		}
+		return '';
 
-	};
+	}
 
-} ) (	require( 'underscore' ),
-		require( './theme.js' ) );
+};
+
+module.exports = noteParser;

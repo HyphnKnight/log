@@ -1,65 +1,36 @@
-module.exports = ( function ( _ , theme ) {
+'use strict';
 
-	return function indentLogRecursive ( messages , space ) {
+const
+	_ = require( 'underscore' ),
+	theme = require( './theme.js' );
 
-		space = _.isString( space ) ?
-			space + '    ' :
-			'    ';
+function indentLogRecursive ( messages , space ) {
 
-		if ( _.isString( messages ) || _.isNumber( messages ) ) {
+	space = _.isString( space ) ? space + '    ' : '                        ';
+
+	if ( _.isString( messages ) || _.isNumber( messages ) ) {
 
 
-			messages = '' + messages;
+		messages = '' + messages;
 
-			if ( messages.length < 80 ) {
+		if ( messages.length < 80 ) {
 
-				console.log( space + messages );
+			console.log( `${space}${messages}` );
 
-			} else {
+		} else {
 
-				var string = '';
+			let string = '';
 
-				_.chain( messages.split( ' ' ) )
-					.each( function( value ) {
+			_.chain( messages.split( ' ' ) )
+				.each( value => {
 
-						string += ' ' + value;
+					string += ' ' + value;
 
-						if ( string.length > 80 ) {
+					if ( string.length > 80 ) {
 
-							console.log( space + string );
+						console.log( space + string );
 
-							string = '';
-
-						}
-
-					} );
-
-			}
-
-		} else if (  _.isArray( messages ) ) {
-
-			_.each( messages, function ( message ) {
-
-				indentLogRecursive( message , space );
-
-			} );
-
-		} else if ( _.isObject( messages ) ) {
-
-			_.chain( messages )
-				.pairs()
-				.each( function ( dataPair ) {
-
-					if ( _.isString( dataPair[1] ) || _.isNumber( dataPair[1] ) ) {
-
-						var message = '' + dataPair[1];
-
-						console.log( space + dataPair[0] + ' : ' + message );
-
-					} else {
-
-						console.log( space + dataPair[0] );
-						indentLogRecursive( dataPair[1] , space );
+						string = '';
 
 					}
 
@@ -67,6 +38,32 @@ module.exports = ( function ( _ , theme ) {
 
 		}
 
-	};
+	} else if (  _.isArray( messages ) ) {
 
-} ) ( require( 'underscore' ) , require( './theme.js' ) );
+		_.each( messages, message => { indentLogRecursive( message , space ); } );
+
+	} else if ( _.isObject( messages ) ) {
+
+		_.chain( messages )
+			.pairs()
+			.each( dataPair => {
+
+				if ( _.isString( dataPair[1] ) || _.isNumber( dataPair[1] ) ) {
+
+					console.log( `${space}${dataPair[0]} : ${dataPair[1]}` );
+
+				} else {
+
+					console.log( `${space}${dataPair[0]}` );
+
+					indentLogRecursive( dataPair[1] , space );
+
+				}
+
+			} );
+
+	}
+
+};
+
+module.exports = indentLogRecursive;

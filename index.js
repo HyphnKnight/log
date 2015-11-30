@@ -1,103 +1,39 @@
-var
-	processPath	= './scripts/process/',
-	fsPath		= './scripts/fileSystem/',
-	packagePath	= './scripts/packages/',
-	serverPath	= './scripts/server/',
-	helperPath	= './scripts/helper/'
+const
+	exec	= require( './scripts/exec.js' ),
+	fs		= require( './scripts/fileSystem.js' ),
+	pckg	= require( './scripts/packages.js' ),
+	server	= require( './scripts/server.js' ),
+	help	= require( './scripts/helper.js' );
 
-module.exports = ( function (	success,
-								warning,
-								error,
-								failure,
-								starting,
-								ending,
+module.exports = {
 
-								creating,
-								copying,
-								deleting,
-								existing,
-								processing,
-								changing,
-								writing,
-								reading,
-								watching,
+	starting	: exec.starting,
+	ending		: exec.ending,
+	success		: exec.success,
+	warning		: exec.warning,
+	failure		: exec.failure,
+	error		: exec.error,
 
-								installingPackage,
-								uninstallingPackage,
-								creatingTask,
-								runningTask,
+	reading		: fs.reading,
+	writing		: fs.writing,
+	creating	: fs.creating,
+	deleting	: fs.deleting,
+	existing	: fs.existing,
+	copying		: fs.copying,
+	processing	: fs.processing,
+	watching	: fs.watching,
+	changing	: fs.changing,
 
-								response,
-								route,
-								startingServer,
+	installingPackage	: pckg.installingPackage,
+	uninstallingPackage	: pckg.uninstallingPackage,
+	creatingTask		: pckg.creatingTask,
+	runningTask			: pckg.runningTask,
 
-								space,
-								note ) {
+	startingServer	: server.startingServer,
+	route			: server.route,
+	response		: server.response,
 
-	return {
+	space	: help.space,
+	note	: help.note,
 
-		//Process
-		success : success,
-		warning : warning,
-		error : error,
-		failure : failure,
-		starting : starting,
-		ending : ending,
-
-		//File System
-		creating : creating,
-		copying : copying,
-		deleting : deleting,
-		existing : existing,
-		processing : processing,
-		changing : changing,
-		writing : writing,
-		watching : watching,
-
-
-		//Package Handling
-		installingPackage : installingPackage,
-		uninstallingPackage : uninstallingPackage,
-		creatingTask : creatingTask,
-		runningTask : runningTask,
-
-
-		//Server
-		response : response,
-		route : route,
-		startingServer : startingServer,
-
-		//Utility
-		space : space,
-		note : note
-
-	};
-
-} )(	require( processPath + 'success.js' ),
-		require( processPath + 'warning.js' ),
-		require( processPath + 'error.js' ),
-		require( processPath + 'failure.js' ),
-		require( processPath + 'starting.js' ),
-		require( processPath + 'ending.js' ),
-
-		require( fsPath + 'creating.js' ),
-		require( fsPath + 'copying.js' ),
-		require( fsPath + 'deleting.js' ),
-		require( fsPath + 'existing.js' ),
-		require( fsPath + 'processing.js' ),
-		require( fsPath + 'changing.js' ),
-		require( fsPath + 'writing.js' ),
-		require( fsPath + 'reading.js' ),
-		require( fsPath + 'watching.js' ),
-
-		require( packagePath + 'installingPackage.js' ),
-		require( packagePath + 'uninstallingPackage.js' ),
-		require( packagePath + 'creatingTask.js' ),
-		require( packagePath + 'runningTask.js' ),
-
-		require( serverPath + 'response.js' ),
-		require( serverPath + 'route.js' ),
-		require( serverPath + 'startingServer.js' ),
-
-		require( helperPath + 'space.js' ),
-		require( helperPath + 'note.js' ) );
+};

@@ -1,51 +1,41 @@
-module.exports = ( function ( _ , chalk , zeroToTwoDigits , indentLogRecursive , noteParser , space ) {
+'use strict';
 
-	return function printMessage ( keyword , message , note , beforeSpace , afterSpace ) {
+const
+	_					= require( 'underscore' ),
+	chalk				= require( 'chalk' ),
+	zeroToTwoDigits		= require( './zeroToTwoDigits.js' ),
+	indentLogRecursive	= require( './indentLogRecursive.js' ),
+	stringAlignRight	= require( './stringAlignRight.js' ),
+	noteParser			= require( './noteParser.js' ),
+	space				= require( './../helper.js' ).space;
 
-		var
-			date = new Date(),
-			timeStamp = '[' + chalk.gray( zeroToTwoDigits( date.getHours() ) + ':' + zeroToTwoDigits( date.getMinutes() ) + ':' + zeroToTwoDigits( date.getSeconds() ) ) + ']';
+function printMessage ( keyword , message , note , beforeSpace , afterSpace ) {
 
-		if ( _.isString( message ) || _.isNumber( message ) ) {
+	const
+		date = new Date (),
+		timeStamp = '[' + chalk.gray( zeroToTwoDigits( date.getHours() ) + ':' + zeroToTwoDigits( date.getMinutes() ) + ':' + zeroToTwoDigits( date.getSeconds() ) ) + ']';
 
-			messages = '' + message;
+	if ( _.isString( message ) || _.isNumber( message ) ) {
 
-			space( _.isNumber( beforeSpace ) ?
-				beforeSpace :
-				0 );
+		space( _.isNumber( beforeSpace ) ? beforeSpace : 0 );
 
-			console.log( timeStamp + ' ' + keyword + ' : ' + message + noteParser( note ) );
+		console.log( `${timeStamp} ${keyword} : ${message}` + noteParser( note ) );
 
-			space( _.isNumber( afterSpace ) ?
-				afterSpace :
-				_.isNumber( beforeSpace ) ?
-					beforeSpace :
-					0  );
+		space( _.isNumber( afterSpace ) ? afterSpace : _.isNumber( beforeSpace ) ? beforeSpace : 0 );
 
-		} else {
+	} else {
 
 
-			space( _.isNumber( beforeSpace ) ?
-				beforeSpace :
-				0 );
+		space( _.isNumber( beforeSpace ) ? beforeSpace : 0 );
 
-			console.log ( timeStamp + ' ' + keyword + ' : ' + message.title + noteParser( note ) );
+		console.log( `${timeStamp} ${keyword} : ${message.title}` + noteParser( note ) );
 
-			indentLogRecursive( message.message )
+		indentLogRecursive( message.message )
 
-			space( _.isNumber( afterSpace ) ?
-				afterSpace :
-				_.isNumber( beforeSpace ) ?
-					beforeSpace :
-					0  );
+		space( _.isNumber( afterSpace ) ? afterSpace : _.isNumber( beforeSpace ) ? beforeSpace : 0 );
 
-		}
+	}
 
-	};
+};
 
-} ) (	require( 'underscore' ),
-		require( 'chalk' ),
-		require( './zeroToTwoDigits.js' ),
-		require( './indentLogRecursive.js' ),
-		require( './noteParser.js' ),
-		require( './../helper/space.js' ) );
+module.exports = printMessage;
