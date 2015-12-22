@@ -67,13 +67,13 @@ function copying ( sourcePath , destinationPath , note ) {
 
 };
 
-function processing ( sourcePath , destinationPath , task , note ) {
+function processing ( sourcePath , task , note ) {
 
 	printMessage(	titles.processing,
 					_.isArray( sourcePath ) ?
-						{	title : `Processing following files with ${theme.packageTask( task )} and moving the results to ${theme.destPath( destinationPath )}`,
+						{	title : `Processing following files with ${theme.packageTask( task )}`,
 							message : _.map( sourcePath , function ( value ) { return theme.srcPath( value ); } ) } :
-						`Processing ${theme.srcPath( sourcePath )} with ${theme.packageTask( task )} and moving the result to ${theme.destPath( destinationPath )}`,
+						`Processing ${theme.srcPath( sourcePath )} with ${theme.packageTask( task )}`,
 					note );
 
 };

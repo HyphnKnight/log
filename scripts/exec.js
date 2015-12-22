@@ -29,6 +29,8 @@ function success ( message , note , info ) {
 
 function warning ( message , note , err ) {
 
+	if ( _.isUndefined( err ) && !_.isString(note) ) err = note;
+
 	printMessage(	titles.warning,
 					_.isUndefined( err ) ?
 					message :
@@ -44,17 +46,21 @@ function failure ( message , note ) {
 
 function error ( message , note , err ) {
 
+	if ( _.isUndefined( err ) && !_.isString(note) ) err = note;
+
 	let error = {};
 
-	if ( !_.isUndefined( err ) ) {
-
+	if ( _.isObject( err ) &&
+		(	_.isString( err.name ) ||
+			_.isString( err.message ) ||
+			_.isString( err.fileName ) ) ) {
 		if ( err.name ) error.type = err.name;
 		if ( err.message ) error.message = err.message;
 		if ( err.fileName ) error.fileName = err.fileName;
 		if ( err.lineNumber ) error.lineNumber = err.lineNumber;
 		if ( err.columnNumber ) error.columnNumber = err.columnNumber;
 
-	} else error = err;
+	}
 
 	printMessage(	titles.error,
 					_.isUndefined( err ) ? message : { title : message , message : error  },

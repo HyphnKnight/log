@@ -28,7 +28,7 @@ module.exports = {
 	makingTask			: chalk.green( stringAlignRight( 'Making' ) ),
 	runningTask			: chalk.green( stringAlignRight( 'Running' ) ),
 
-	startingServer	: chalk.green.bold( stringAlignRight( 'Starting' ) ),
+	startingServer	: chalk.green.bold( stringAlignRight( 'Server' ) ),
 	route			: chalk.green( stringAlignRight( 'Route' ) ),
 	response		: chalk.green( stringAlignRight( 'Response' ) )
 
