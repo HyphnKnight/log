@@ -1,10 +1,10 @@
 'use strict';
 
 const
-	printMessage	= require( './util/printMessage.js' ),
-	theme			= require( './util/theme.js' ),
-	titles			= require( './util/titles.js' ),
-	_				= require( 'underscore' );
+	printMessage = require( './util/printMessage.js' ),
+	theme			   = require( './util/theme.js' ),
+	titles			 = require( './util/titles.js' ),
+	_				     = require( 'lodash' );
 
 function starting ( process , note ) {
 
