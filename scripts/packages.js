@@ -44,7 +44,7 @@ function makingTask ( task , pckg , note ) {
 function runningTask ( task , pckg , path , note ) {
 
 	path = _.isUndefined( path ) ?
-		'' : ` on ${theme.destPath( path )}`;
+		'' : ` on ${theme.destPath( relativePath( path ) )}`;
 
 	printMessage(	titles.runningTask,
 					_.isArray( task ) ?

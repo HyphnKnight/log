@@ -15,12 +15,17 @@ function startingServer ( address , port , service ) {
 
 function route ( method , servedPath , servingPath ) {
 
+  servedPath = relativePath( servedPath );
+  servingPath = relativePath( servingPath );
+
 	printMessage(	titles.route,
 					`Serving ${theme.srcPath( servingPath )} on the route ${theme.destPath( servedPath )}` );
 
 };
 
 function response ( method , path , responseDesc ) {
+
+  path = relativePath( path );
 
 	printMessage(	titles.response,
 					_.isUndefined( responseDesc ) ?
