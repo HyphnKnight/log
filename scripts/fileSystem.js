@@ -1,10 +1,11 @@
 'use strict';
 
 const
-	printMessage	= require( './util/printMessage.js' ),
-	theme			= require( './util/theme.js' ),
-	titles			= require( './util/titles.js' ),
-	_				= require( 'underscore' );
+  printMessage = require( './util/printMessage.js' ),
+  theme        = require( './util/theme.js' ),
+  titles       = require( './util/titles.js' ),
+  relativePath = require( './util/relativePath.js' ),
+  _            = require( 'lodash' );
 
 function reading ( path , note ) {
 

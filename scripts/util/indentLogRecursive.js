@@ -1,7 +1,7 @@
 'use strict';
 
 const
-	_ = require( 'underscore' ),
+	_ = require( 'lodash' ),
 	theme = require( './theme.js' );
 
 function indentLogRecursive ( messages , space ) {

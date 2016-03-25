@@ -1,10 +1,11 @@
 'use strict';
 
 const
-	_				= require( 'underscore' ),
-	printMessage	= require( './util/printMessage.js' ),
-	titles			= require( './util/titles.js' ),
-	theme			= require( './util/theme.js' );
+	_				     = require( 'lodash' ),
+	printMessage = require( './util/printMessage.js' ),
+	titles			 = require( './util/titles.js' ),
+  relativePath = require( './util/relativePath.js' ),
+	theme			   = require( './util/theme.js' );
 
 
 function installingPackage ( pckg , service , note ) {

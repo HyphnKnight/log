@@ -1,8 +1,8 @@
 'use strict';
 
 const
-	_ = require( 'underscore' ),
-	theme = require( './util/theme.js' ),
+	_                  = require( 'lodash' ),
+	theme              = require( './util/theme.js' ),
 	indentLogRecursive = require( './util/indentLogRecursive.js' );
 
 function space ( num ) {

@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.0",
-    "underscore": "^1.8.3"
+    "lodash": "^4.6.1"
   },
   "gitHead": "c1cd65ed5ac23598408556107f205f21d07a9d7b",
   "readme": "#Log\n\nLog is a small library of logs that I frequently use formatted for consistency and clarity.\n",

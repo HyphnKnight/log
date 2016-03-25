@@ -1,7 +1,7 @@
 'use strict';
 
 const
-	_					= require( 'underscore' ),
+	_					= require( 'lodash' ),
 	chalk				= require( 'chalk' ),
 	zeroToTwoDigits		= require( './zeroToTwoDigits.js' ),
 	indentLogRecursive	= require( './indentLogRecursive.js' ),
