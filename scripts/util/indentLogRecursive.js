@@ -45,7 +45,7 @@ function indentLogRecursive ( messages , space ) {
 	} else if ( _.isObject( messages ) ) {
 
 		_.chain( messages )
-			.pairs()
+			.toPairs()
 			.each( dataPair => {
 
 				if ( _.isString( dataPair[1] ) || _.isNumber( dataPair[1] ) ) {
